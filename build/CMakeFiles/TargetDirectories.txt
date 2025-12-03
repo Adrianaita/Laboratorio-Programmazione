@@ -1,0 +1,3 @@
+/home/adriana/Scaricati/TodoList/build/CMakeFiles/myToDoList.dir
+/home/adriana/Scaricati/TodoList/build/CMakeFiles/edit_cache.dir
+/home/adriana/Scaricati/TodoList/build/CMakeFiles/rebuild_cache.dir

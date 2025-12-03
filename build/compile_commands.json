@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/adriana/Scaricati/TodoList/build",
+  "command": "/usr/bin/g++   -g -std=gnu++11 -o CMakeFiles/myToDoList.dir/main.cpp.o -c /home/adriana/Scaricati/TodoList/main.cpp",
+  "file": "/home/adriana/Scaricati/TodoList/main.cpp",
+  "output": "CMakeFiles/myToDoList.dir/main.cpp.o"
+},
+{
+  "directory": "/home/adriana/Scaricati/TodoList/build",
+  "command": "/usr/bin/g++   -g -std=gnu++11 -o CMakeFiles/myToDoList.dir/Date.cpp.o -c /home/adriana/Scaricati/TodoList/Date.cpp",
+  "file": "/home/adriana/Scaricati/TodoList/Date.cpp",
+  "output": "CMakeFiles/myToDoList.dir/Date.cpp.o"
+}
+]
