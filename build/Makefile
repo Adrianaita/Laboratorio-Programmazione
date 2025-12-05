@@ -153,6 +153,54 @@ Date.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/Date.cpp.s
 .PHONY : Date.cpp.s
 
+ToDo.o: ToDo.cpp.o
+.PHONY : ToDo.o
+
+# target to build an object file
+ToDo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/ToDo.cpp.o
+.PHONY : ToDo.cpp.o
+
+ToDo.i: ToDo.cpp.i
+.PHONY : ToDo.i
+
+# target to preprocess a source file
+ToDo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/ToDo.cpp.i
+.PHONY : ToDo.cpp.i
+
+ToDo.s: ToDo.cpp.s
+.PHONY : ToDo.s
+
+# target to generate assembly for a file
+ToDo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/ToDo.cpp.s
+.PHONY : ToDo.cpp.s
+
+ToDoList.o: ToDoList.cpp.o
+.PHONY : ToDoList.o
+
+# target to build an object file
+ToDoList.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/ToDoList.cpp.o
+.PHONY : ToDoList.cpp.o
+
+ToDoList.i: ToDoList.cpp.i
+.PHONY : ToDoList.i
+
+# target to preprocess a source file
+ToDoList.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/ToDoList.cpp.i
+.PHONY : ToDoList.cpp.i
+
+ToDoList.s: ToDoList.cpp.s
+.PHONY : ToDoList.s
+
+# target to generate assembly for a file
+ToDoList.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/ToDoList.cpp.s
+.PHONY : ToDoList.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -189,6 +237,12 @@ help:
 	@echo "... Date.o"
 	@echo "... Date.i"
 	@echo "... Date.s"
+	@echo "... ToDo.o"
+	@echo "... ToDo.i"
+	@echo "... ToDo.s"
+	@echo "... ToDoList.o"
+	@echo "... ToDoList.i"
+	@echo "... ToDoList.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

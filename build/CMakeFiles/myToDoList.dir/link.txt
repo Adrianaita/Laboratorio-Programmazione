@@ -1,1 +1,1 @@
-/usr/bin/g++ -g CMakeFiles/myToDoList.dir/main.cpp.o CMakeFiles/myToDoList.dir/Date.cpp.o -o myToDoList
+/usr/bin/g++ -g CMakeFiles/myToDoList.dir/main.cpp.o CMakeFiles/myToDoList.dir/Date.cpp.o CMakeFiles/myToDoList.dir/ToDo.cpp.o CMakeFiles/myToDoList.dir/ToDoList.cpp.o -o myToDoList

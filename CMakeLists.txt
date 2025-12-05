@@ -9,5 +9,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(myToDoList 
     main.cpp
     Date.cpp
-    #ToDo.cpp
+    ToDo.cpp
+    ToDoList.cpp
 )
