@@ -1,0 +1,14 @@
+# Ignora la cartella di compilazione
+build/
+cmake-build-debug/
+
+# Ignora i file eseguibili (binari)
+main
+myToDoList
+*.exe
+*.o
+
+# Ignora le impostazioni personali di VS Code
+.vscode/
+.idea/
+.DS_Store
