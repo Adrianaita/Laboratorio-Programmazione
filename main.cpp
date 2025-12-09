@@ -93,7 +93,7 @@ int main()
     cout << "********** Benvenuto nella ToDo List! **********" << endl;
 
     // Creazione della lista (chiama il costruttore di ToDoList)
-    ToDoList miaLista("Lista Esame");
+    ToDoList miaLista("La mia lista personale");
 
     int scelta = -1;
 
