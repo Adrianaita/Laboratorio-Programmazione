@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /home/adriana/Scaricati/TodoList/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
@@ -84,6 +94,51 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"gmock\" \"gtest\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -129,12 +184,78 @@ myToDoList/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/build
 .PHONY : myToDoList/fast
 
+#=============================================================================
+# Target rules for targets named todo_tests
+
+# Build rule for target.
+todo_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 todo_tests
+.PHONY : todo_tests
+
+# fast build rule for target.
+todo_tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/build
+.PHONY : todo_tests/fast
+
+#=============================================================================
+# Target rules for targets named gmock
+
+# Build rule for target.
+gmock: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
+.PHONY : gmock
+
+# fast build rule for target.
+gmock/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
+.PHONY : gmock/fast
+
+#=============================================================================
+# Target rules for targets named gmock_main
+
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
+.PHONY : gmock_main
+
+# fast build rule for target.
+gmock_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
+.PHONY : gmock_main/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
+
 Date.o: Date.cpp.o
 .PHONY : Date.o
 
 # target to build an object file
 Date.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/Date.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/Date.cpp.o
 .PHONY : Date.cpp.o
 
 Date.i: Date.cpp.i
@@ -143,6 +264,7 @@ Date.i: Date.cpp.i
 # target to preprocess a source file
 Date.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/Date.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/Date.cpp.i
 .PHONY : Date.cpp.i
 
 Date.s: Date.cpp.s
@@ -151,6 +273,7 @@ Date.s: Date.cpp.s
 # target to generate assembly for a file
 Date.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/Date.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/Date.cpp.s
 .PHONY : Date.cpp.s
 
 ToDo.o: ToDo.cpp.o
@@ -159,6 +282,7 @@ ToDo.o: ToDo.cpp.o
 # target to build an object file
 ToDo.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/ToDo.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/ToDo.cpp.o
 .PHONY : ToDo.cpp.o
 
 ToDo.i: ToDo.cpp.i
@@ -167,6 +291,7 @@ ToDo.i: ToDo.cpp.i
 # target to preprocess a source file
 ToDo.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/ToDo.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/ToDo.cpp.i
 .PHONY : ToDo.cpp.i
 
 ToDo.s: ToDo.cpp.s
@@ -175,6 +300,7 @@ ToDo.s: ToDo.cpp.s
 # target to generate assembly for a file
 ToDo.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/ToDo.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/ToDo.cpp.s
 .PHONY : ToDo.cpp.s
 
 ToDoList.o: ToDoList.cpp.o
@@ -183,6 +309,7 @@ ToDoList.o: ToDoList.cpp.o
 # target to build an object file
 ToDoList.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/ToDoList.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/ToDoList.cpp.o
 .PHONY : ToDoList.cpp.o
 
 ToDoList.i: ToDoList.cpp.i
@@ -191,6 +318,7 @@ ToDoList.i: ToDoList.cpp.i
 # target to preprocess a source file
 ToDoList.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/ToDoList.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/ToDoList.cpp.i
 .PHONY : ToDoList.cpp.i
 
 ToDoList.s: ToDoList.cpp.s
@@ -199,6 +327,7 @@ ToDoList.s: ToDoList.cpp.s
 # target to generate assembly for a file
 ToDoList.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/ToDoList.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/ToDoList.cpp.s
 .PHONY : ToDoList.cpp.s
 
 main.o: main.cpp.o
@@ -225,6 +354,78 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/myToDoList.dir/build.make CMakeFiles/myToDoList.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+test/test_date.o: test/test_date.cpp.o
+.PHONY : test/test_date.o
+
+# target to build an object file
+test/test_date.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/test/test_date.cpp.o
+.PHONY : test/test_date.cpp.o
+
+test/test_date.i: test/test_date.cpp.i
+.PHONY : test/test_date.i
+
+# target to preprocess a source file
+test/test_date.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/test/test_date.cpp.i
+.PHONY : test/test_date.cpp.i
+
+test/test_date.s: test/test_date.cpp.s
+.PHONY : test/test_date.s
+
+# target to generate assembly for a file
+test/test_date.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/test/test_date.cpp.s
+.PHONY : test/test_date.cpp.s
+
+test/test_todo.o: test/test_todo.cpp.o
+.PHONY : test/test_todo.o
+
+# target to build an object file
+test/test_todo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/test/test_todo.cpp.o
+.PHONY : test/test_todo.cpp.o
+
+test/test_todo.i: test/test_todo.cpp.i
+.PHONY : test/test_todo.i
+
+# target to preprocess a source file
+test/test_todo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/test/test_todo.cpp.i
+.PHONY : test/test_todo.cpp.i
+
+test/test_todo.s: test/test_todo.cpp.s
+.PHONY : test/test_todo.s
+
+# target to generate assembly for a file
+test/test_todo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/test/test_todo.cpp.s
+.PHONY : test/test_todo.cpp.s
+
+test/test_todolist.o: test/test_todolist.cpp.o
+.PHONY : test/test_todolist.o
+
+# target to build an object file
+test/test_todolist.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/test/test_todolist.cpp.o
+.PHONY : test/test_todolist.cpp.o
+
+test/test_todolist.i: test/test_todolist.cpp.i
+.PHONY : test/test_todolist.i
+
+# target to preprocess a source file
+test/test_todolist.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/test/test_todolist.cpp.i
+.PHONY : test/test_todolist.cpp.i
+
+test/test_todolist.s: test/test_todolist.cpp.s
+.PHONY : test/test_todolist.s
+
+# target to generate assembly for a file
+test/test_todolist.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/todo_tests.dir/build.make CMakeFiles/todo_tests.dir/test/test_todolist.cpp.s
+.PHONY : test/test_todolist.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -232,8 +433,18 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... test"
+	@echo "... gmock"
+	@echo "... gmock_main"
+	@echo "... gtest"
+	@echo "... gtest_main"
 	@echo "... myToDoList"
+	@echo "... todo_tests"
 	@echo "... Date.o"
 	@echo "... Date.i"
 	@echo "... Date.s"
@@ -246,6 +457,15 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... test/test_date.o"
+	@echo "... test/test_date.i"
+	@echo "... test/test_date.s"
+	@echo "... test/test_todo.o"
+	@echo "... test/test_todo.i"
+	@echo "... test/test_todo.s"
+	@echo "... test/test_todolist.o"
+	@echo "... test/test_todolist.i"
+	@echo "... test/test_todolist.s"
 .PHONY : help
 
 

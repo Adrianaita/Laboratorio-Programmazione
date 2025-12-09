@@ -8,17 +8,17 @@ Date::Date() : day(1), month(1), year(2024) {}
 // Costruttore con parametri
 Date::Date(int d, int m, int y)
 {
+    // prima salvo i valori
+    day = d;
+    month = m;
+    year = y;
+
+    // e dopo controllo se sono validi!
     if (!isValid())
     {
         day = 1;
         month = 1;
         year = 2024;
-    }
-    else
-    {
-        day = d;
-        month = m;
-        year = y;
     }
 }
 
@@ -27,12 +27,19 @@ int Date::getDay() const { return day; }
 int Date::getMonth() const { return month; }
 int Date::getYear() const { return year; }
 
-// Setter unico (sostituisce i vecchi setYear, setMonth...)
+// Setter unico
 void Date::setDate(int d, int m, int y)
 {
     day = d;
     month = m;
     year = y;
+    // Anche qui, se non è valida resetto
+    if (!isValid())
+    {
+        day = 1;
+        month = 1;
+        year = 2024;
+    }
 }
 
 // Operatore di uguaglianza
@@ -41,7 +48,7 @@ bool Date::operator==(const Date &other) const
     return day == other.day && month == other.month && year == other.year;
 }
 
-// Operatore Minore (<) - NUOVO per il tuo progetto
+// Operatore Minore (<)
 bool Date::operator<(const Date &other) const
 {
     if (year != other.year)
@@ -51,7 +58,7 @@ bool Date::operator<(const Date &other) const
     return day < other.day;
 }
 
-// Metodo formattazione (sostituisce il vecchio toString)
+// Metodo formattazione
 std::string Date::formatDate() const
 {
     std::stringstream ss;

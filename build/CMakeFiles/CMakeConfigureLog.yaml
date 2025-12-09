@@ -766,3 +766,42 @@ events:
       della GNU General Public License versione 3 o (a scelta) una versione più recente.
       Questo programma non ha assolutamente alcuna garanzia.
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/usr/share/cmake/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "/usr/share/cmake/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "build/_deps/googletest-src/googletest/cmake/internal_utils.cmake:66 (find_package)"
+      - "build/_deps/googletest-src/googletest/CMakeLists.txt:83 (config_compiler_and_linker)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/home/adriana/Scaricati/TodoList/build/CMakeFiles/CMakeScratch/TryCompile-M7gtE6"
+      binary: "/home/adriana/Scaricati/TodoList/build/CMakeFiles/CMakeScratch/TryCompile-M7gtE6"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/adriana/Scaricati/TodoList/build/CMakeFiles/CMakeScratch/TryCompile-M7gtE6'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_935b1/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_935b1.dir/build.make CMakeFiles/cmTC_935b1.dir/build
+        gmake[1]: ingresso nella directory «/home/adriana/Scaricati/TodoList/build/CMakeFiles/CMakeScratch/TryCompile-M7gtE6»
+        Building C object CMakeFiles/cmTC_935b1.dir/src.c.o
+        /usr/bin/gcc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_935b1.dir/src.c.o -c /home/adriana/Scaricati/TodoList/build/CMakeFiles/CMakeScratch/TryCompile-M7gtE6/src.c
+        Linking C executable cmTC_935b1
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_935b1.dir/link.txt --verbose=1
+        /usr/bin/gcc CMakeFiles/cmTC_935b1.dir/src.c.o -o cmTC_935b1
+        gmake[1]: uscita dalla directory «/home/adriana/Scaricati/TodoList/build/CMakeFiles/CMakeScratch/TryCompile-M7gtE6»
+        
+      exitCode: 0
+...
