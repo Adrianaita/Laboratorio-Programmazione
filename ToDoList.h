@@ -15,11 +15,11 @@ public:
     // Costruttore
     explicit ToDoList(std::string listName = "La mia Lista");
 
-    // --- Gestione Attività ---
+    // Gestione Attività
 
     void addTodo(const std::string &taskTitle, const Date &date, Priority prio = Priority::NORMAL);
 
-    // Rimuovi: Restituisce true se ha funzionato, false se l'indice era sbagliato
+    // Restituisce true se ha funzionato, false se l'indice era sbagliato
     bool removeTodo(int index);
 
     // Cambia stato (Fatto/Non fatto)
@@ -27,7 +27,7 @@ public:
 
     void sortTasks(); // Ordina per data
 
-    // --- Visualizzazione e File ---
+    // Visualizzazione e File
     void display() const;
 
     // Salvataggio

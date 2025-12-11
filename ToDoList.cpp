@@ -37,7 +37,6 @@ bool ToDoList::removeTodo(int index)
         return false;
     }
 
-    // I vector partono da 0, ma l'utente usa 1. Quindi facciamo (index - 1)
     tasks.erase(tasks.begin() + (index - 1));
 
     cout << "Compito rimosso con successo." << endl;
@@ -52,7 +51,6 @@ bool ToDoList::toggleStatus(int index)
         return false;
     }
 
-    // Prendiamo l'elemento e invertiamo il booleano
     bool statoAttuale = tasks[index - 1].getStatus();
     tasks[index - 1].setStatus(!statoAttuale);
 
@@ -85,7 +83,7 @@ void ToDoList::display() const
     {
         for (size_t i = 0; i < tasks.size(); i++)
         {
-            // Stampa: "1. [ ] Fare la spesa (Scadenza: ...)"
+
             cout << (i + 1) << ". " << tasks[i].toString() << endl;
         }
     }
@@ -108,7 +106,7 @@ void ToDoList::save(const string &filename) const
     // Seconda riga: quanti compiti ci sono
     file << tasks.size() << endl;
 
-    // Poi salviamo tutti i dati di ogni compito
+    // Poi salvo tutti i dati di ogni compito
     for (size_t i = 0; i < tasks.size(); i++)
     {
         ToDo t = tasks[i];
@@ -116,7 +114,7 @@ void ToDoList::save(const string &filename) const
         file << t.getDeadline().getDay() << " "
              << t.getDeadline().getMonth() << " "
              << t.getDeadline().getYear() << endl;
-        // Salviamo la priorità e se è completato
+        // Salvo la priorità e se è completato
         file << (int)t.getPriority() << " " << t.getStatus() << endl;
     }
 
@@ -142,7 +140,7 @@ void ToDoList::load(const string &filename)
 
     int numeroCompiti;
     file >> numeroCompiti;
-    file.ignore(); // Ignora l'invio dopo il numero
+    file.ignore();
 
     for (int i = 0; i < numeroCompiti; i++)
     {
@@ -152,11 +150,11 @@ void ToDoList::load(const string &filename)
         getline(file, titolo);
         file >> d >> m >> y;
         file >> prioritaInt >> fatto;
-        file.ignore(); // Ignora l'invio finale
+        file.ignore();
 
         // Ricostruisco l'oggetto
         Date data(d, m, y);
-        Priority p = (Priority)prioritaInt; // Converto intero in enum
+        Priority p = (Priority)prioritaInt;
 
         ToDo t(titolo, data, p);
         t.setStatus((bool)fatto);
