@@ -1,14 +1,25 @@
-# Ignora la cartella di compilazione
+# --- File di Build (Generici) ---
 build/
-cmake-build-debug/
+bin/
+lib/
 
-# Ignora i file eseguibili (binari)
-main
-myToDoList
+# --- File compilati ed eseguibili ---
 *.exe
+*.out
+*.app
 *.o
+*.obj
+*.a
+*.so
+*.dll
+*.dylib
 
-# Ignora le impostazioni personali di VS Code
-.vscode/
+# --- CLion (JetBrains) ---
 .idea/
+cmake-build-debug/
+cmake-build-release/
+cmake-build-*/
+
+# --- File di Sistema ---
 .DS_Store
+Thumbs.db
